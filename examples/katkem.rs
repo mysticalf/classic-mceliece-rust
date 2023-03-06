@@ -193,9 +193,11 @@ fn create_response_file(filepath: &str) -> R {
 
     // initialize RNG
     let mut entropy_input = [0u8; 48];
+    //这一步骤将entropy_input数组的地址依次赋值给前一个数
     for (i, e) in entropy_input.iter_mut().enumerate() {
         *e = i as u8;
     }
+    
     let mut rng = AesState::new();
     rng.randombytes_init(entropy_input);
 
